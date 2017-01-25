@@ -38,10 +38,6 @@ $.get( "http://localhost/interop/test.php", function(data) {
 
 var data_json = jQuery.parseJSON(data);
 
-    $.get("http://www.infoclimat.fr/public-api/gfs/xml?_ll="+data_json.lat+","+data_json.lon+"+&_auth=ARsDFFIsBCZRfFtsD3lSe1Q8ADUPeVRzBHgFZgtuAH1UMQNgUTNcPlU5VClSfVZkUn8AYVxmVW0Eb1I2WylSLgFgA25SNwRuUT1bPw83UnlUeAB9DzFUcwR4BWMLYwBhVCkDb1EzXCBVOFQoUmNWZlJnAH9cfFVsBGRSPVs1UjEBZwNkUjIEYVE6WyYPIFJjVGUAZg9mVD4EbwVhCzMAMFQzA2JRMlw5VThUKFJiVmtSZQBpXGtVbwRlUjVbKVIuARsDFFIsBCZRfFtsD3lSe1QyAD4PZA%3D%3D&_c=19f3aa7d766b6ba91191c8be71dd1ab2", function(data2){
-      console.log(data2);
-    });
-
 
 
       var map = L.map('mapid').setView([data_json.lat, data_json.lon], 13);
