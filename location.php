@@ -12,13 +12,12 @@ $proc->importStylesheet(DOMDocument::load("test.xsl")); //load script
 echo $proc->transformToXML(DOMDocument::load("test.xml")); //load your file
 
 */
-
-$data = file_get_contents("http://ip-api.com/xml");
+//$_SERVER['REMOTE_ADDR'];
+$data = file_get_contents("http://ip-api.com/xml/");
 
 $data_xml = simplexml_load_string($data);
 
-
-$coord = [];
+    $coord = [];
 
 foreach ($data_xml as $key => $value) {
 
@@ -35,8 +34,8 @@ foreach ($data_xml as $key => $value) {
 }
 
 
-echo(json_encode($coord));
 
-
+var_dump($coord);
+//echo(json_encode($coord));
 
  ?>
