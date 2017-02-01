@@ -1,9 +1,11 @@
 <?php
 
-
+ob_start();
 include 'location.php';
 
+ob_end_clean();
 //var_dump($meteo_xml);
+
 
 // CHargement du source XML
 $xml = new DOMDocument;
