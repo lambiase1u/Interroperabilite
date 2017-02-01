@@ -68,12 +68,12 @@
               -->
                 <tr>
                     <td>
-                        <xsl:value-of select="./@hour"/>
+                        <xsl:value-of select="./@hour"/>:00
                     </td>
 
 
                     <td>
-                        <xsl:value-of select="./@timestamp"/>
+                        <xsl:value-of select="substring(./@timestamp,0, 11)"/>
                     </td>
 
                     <td>
