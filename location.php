@@ -1,6 +1,6 @@
 <?php
 
-// Proxy iut 
+// Proxy iut
 // www-cache:3128
 
 
@@ -13,20 +13,20 @@ echo $proc->transformToXML(DOMDocument::load("test.xml")); //load your file
 
 */
 //$_SERVER['REMOTE_ADDR'];
-$data = file_get_contents("http://ip-api.com/xml/");
+$data = file_get_contents("https://freegeoip.net/xml/90.125.104.70");
 
 $data_xml = simplexml_load_string($data);
 
-    $coord = [];
+$coord = [];
 
 foreach ($data_xml as $key => $value) {
 
-  if($key == "lat"){
+  if($key == "Latitude"){
     //array_push($coord,"lat" => (string) $value);
     $coord["lat"] =  (string) $value;
   }
 
-  if($key == "lon"){
+  if($key == "Longitude"){
       //array_push($coord,"lon" => (string) $value);
       $coord["lon"] =  (string) $value;
   }
@@ -35,7 +35,7 @@ foreach ($data_xml as $key => $value) {
 
 
 
-var_dump($coord);
-//echo(json_encode($coord));
+//var_dump($coord);
+echo(json_encode($coord));
 
  ?>
