@@ -77,7 +77,7 @@
                     </td>
 
                     <td>
-                        <xsl:value-of select="./temperature/level[@val='sol'] - 273.15"/> °
+                        <xsl:value-of select="format-number(./temperature/level[@val='sol'] - 273.15, '0.00')"/> °
                     </td>
                 </tr>
 
