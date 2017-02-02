@@ -57,11 +57,18 @@
 
     <xsl:template match="carto/markers/marker">
 
+      $.get("station_id.php?id=<xsl:value-of select="./@number"/>",function(data){
 
-
+          var details_json = jQuery.parseJSON(data);
 
         L.marker([  <xsl:value-of select="./@lat"/>,   <xsl:value-of select="./@lng"/>]).addTo(map)
-        .bindPopup("<xsl:value-of select="./@name"/>");
+        .bindPopup("<xsl:value-of select="./@name"/> <br />"
+          +" place disponible : "+details_json.available +"<br />"
+          +" place total  : "+details_json.total);
+      })
+
+
+
 
 
     </xsl:template>
