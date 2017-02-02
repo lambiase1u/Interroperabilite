@@ -30,18 +30,18 @@
               <xsl:apply-templates select="carto/markers/marker"/>
 
 
-
-
           })
           .done(function(data) {
-
-
-
-
 
           })
           .fail(function() {
             console.log("probleme api");
+            swal({
+              title: "Error!",
+              text: "probleme avec l'api de la carte!",
+              type: "error",
+              confirmButtonText: "Cool"
+            });
           })
           .always(function() {
 
@@ -57,19 +57,23 @@
 
     <xsl:template match="carto/markers/marker">
 
-        //tableau avec les places libres par station
-      $.get( "http://www.velostanlib.fr/service/stationdetails/nancy/<xsl:value-of select="./@number"/>", function(xml) {
+      $.get("station_id.php?id=<xsl:value-of select="./@number"/>",function(data){
 
-
-      });
-
-
-
-
+          var details_json = jQuery.parseJSON(data);
 
         L.marker([  <xsl:value-of select="./@lat"/>,   <xsl:value-of select="./@lng"/>]).addTo(map)
-        .bindPopup("<xsl:value-of select="./@name"/>");
-
+        .bindPopup("<xsl:value-of select="./@name"/> <br />"
+          +" place disponible : "+details_json.available +"<br />"
+          +" place total  : "+details_json.total);
+      }).fail(function() {
+        console.log("probleme api");
+        swal({
+          title: "Error!",
+          text: "probleme avec l'api des stations de velostan!",
+          type: "error",
+          confirmButtonText: "Cool"
+        });
+      });
 
     </xsl:template>
 

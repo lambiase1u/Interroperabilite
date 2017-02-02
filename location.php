@@ -3,19 +3,25 @@
 // Proxy iut
 // www-cache:3128
 
+include_once 'config.php';
 
-/*
- *  Creation du fichier html a partir d'un XSL
+$data = file_get_contents("http://freegeoip.net/xml/".$_SERVER['REMOTE_ADDR'],0,$context);
 
-$proc=new XsltProcessor;
-$proc->importStylesheet(DOMDocument::load("test.xsl")); //load script
-echo $proc->transformToXML(DOMDocument::load("test.xml")); //load your file
+if($data == FALSE){
+  echo("cant reach freegeoip");
+  header('HTTP/1.0 404 Not Found');
+  die();
+}
 
-*/
-//$_SERVER['REMOTE_ADDR'];
-$data = file_get_contents("https://freegeoip.net/xml/90.125.104.70");
+
 
 $data_xml = simplexml_load_string($data);
+
+if($data_xml == FALSE){
+  echo("cant read data from freegeoip");
+  header('HTTP/1.0 404 Not Found');
+  die();
+}
 
 $coord = [];
 
