@@ -3,7 +3,11 @@
 // Proxy iut
 // www-cache:3128
 
+$opts = array('http' => array('proxy'=> 'tcp://www-cache:3128', 'request_fulluri'=> true));
 
+$context = stream_context_create($opts);
+
+$data = file_get_contents("https://freegeoip.net/xml/90.125.104.70"/*,0,$context*/);
 /*
  *  Creation du fichier html a partir d'un XSL
 
@@ -13,7 +17,7 @@ echo $proc->transformToXML(DOMDocument::load("test.xml")); //load your file
 
 */
 //$_SERVER['REMOTE_ADDR'];
-$data = file_get_contents("https://freegeoip.net/xml/90.125.104.70");
+
 
 $data_xml = simplexml_load_string($data);
 

@@ -1,8 +1,13 @@
 <?php
 
-header('Access-Control-Allow-Origin: *');  
+header('Access-Control-Allow-Origin: *');
 
-$data = file_get_contents("http://www.velostanlib.fr/service/carto");
+
+$opts = array('http' => array('proxy'=> 'tcp://www-cache:3128', 'request_fulluri'=> true));
+$context = stream_context_create($opts);
+
+
+$data = file_get_contents("http://www.velostanlib.fr/service/carto"/*,0,$context*/);
 $data_xml = simplexml_load_string($data);
 
 

@@ -17,17 +17,19 @@
 
 <body>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div  class="col-xs-12 col-md-12">
-        <div id="mapid">
-
-        </div>
+    <div  class="col-xs-8 col-md-8">
+        <div id="mapid"></div>
     </div>
-    <div class="col-xs-12 col-md-12" id="meteo">
-        <span> Méteo </span>
+    <div  class="col-xs-4 col-md-4" class="table-responsive" style="float:right" id="details">
+
+    </div>
+    <div class="col-xs-8 col-md-8" class="table-responsive" id="meteo">
+
     </div>
   </div>
+
 </div>
 
 
@@ -38,17 +40,8 @@
 $(function() {
   $("#meteo").load('meteo.php');
   $("#markers").load('station.php');
+  $("#details").load('station_details.php');
 });
-
-
-
-
-
-
-
-
-
-
 
 </script>
 

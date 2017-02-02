@@ -57,13 +57,6 @@
 
     <xsl:template match="carto/markers/marker">
 
-        //tableau avec les places libres par station
-      $.get( "http://www.velostanlib.fr/service/stationdetails/nancy/<xsl:value-of select="./@number"/>", function(xml) {
-
-
-      });
-
-
 
 
 
