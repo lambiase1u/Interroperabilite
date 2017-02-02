@@ -30,18 +30,18 @@
               <xsl:apply-templates select="carto/markers/marker"/>
 
 
-
-
           })
           .done(function(data) {
-
-
-
-
 
           })
           .fail(function() {
             console.log("probleme api");
+            swal({
+              title: "Error!",
+              text: "probleme avec l'api de la carte!",
+              type: "error",
+              confirmButtonText: "Cool"
+            });
           })
           .always(function() {
 
@@ -65,11 +65,15 @@
         .bindPopup("<xsl:value-of select="./@name"/> <br />"
           +" place disponible : "+details_json.available +"<br />"
           +" place total  : "+details_json.total);
-      })
-
-
-
-
+      }).fail(function() {
+        console.log("probleme api");
+        swal({
+          title: "Error!",
+          text: "probleme avec l'api des stations de velostan!",
+          type: "error",
+          confirmButtonText: "Cool"
+        });
+      });
 
     </xsl:template>
 
